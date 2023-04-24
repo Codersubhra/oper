@@ -1,0 +1,49 @@
+1. 
+read -p "Enter path: " -r filep
+echo "File path - size"
+for i in $ ( find "$filep" -depth )
+do
+	size = $ ( stat -c %s "i" )
+	if [ $size -gt 500 ]
+	then
+		echo $i "-" $size
+	fi
+done
+
+2.
+echo "The names of all files and directories having all permisions are:"
+ls -l|grep ^[-cbd]]rwx
+
+or 
+
+echo "The names of all files and directories having all permisions are:"
+for file in *
+if [ -f $file ]
+then
+	if [ -r $file -a -w $file -a -x $file ]
+	then 
+		ls -l $file
+	fi
+fi
+done
+
+3. 
+echo -n "Enter name of the file: "
+read name
+if [ -f $name ]
+then echo -n "The file exists"
+	echo "Last Modicfication Time of $name is: " `ls -lt $name|tr -s "" ","|cut -d "," -f8`
+else
+	echo "File does not exist"
+fi
+
+5. 
+find. -type f -mtime -14 -print 
+
+or 
+
+find. -type f -mtime -14 -ls
+
+6. 
+echo "Files created or modified in November: "
+ls -lt|ete|l grep 'Nov'
